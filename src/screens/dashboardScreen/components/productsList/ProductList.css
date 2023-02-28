@@ -1,0 +1,129 @@
+.product-list{
+    height: 100vh;
+    overflow: scroll;
+}
+
+.product-tag{
+    margin-left:4%;
+    font-size: 25px;
+}
+
+.product-content{
+    display: flex;
+    flex-direction: row;
+    margin-left:4%;
+    margin-right: 4%;
+    margin-top: 5px;
+    border: 0.001px solid grey ;
+    border-radius: 3px;
+    padding: 10px;
+}
+.product-content-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    height: 200px;
+    width: 250px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.product-image{
+    height: 100%;
+    width: 100%;
+    background-color: #f8f8f8;
+    object-fit: contain;
+ }
+
+.product-content-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-top: 10px;
+    width: calc(100% - 250px);
+    cursor: pointer;
+}
+
+.product-quantity-button{
+    margin-bottom: 8px;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    border-radius: 2px;
+    font-size: 15px;
+    width: fit-content;
+}
+
+.product-quantity-button-name{
+    margin: 5px;
+    font-size: 15px;
+}
+
+.product-quantity-button-name:hover{
+    color: rgb(225, 225, 62);
+}
+
+.product-title{
+    margin: 0px;
+}
+
+.product-description{
+    overflow: scroll;
+    margin: 10px 0px 4px 0px;
+}
+
+.product-price{
+    margin: 3px 0px 0px 0px;
+    font-size: 17px;
+    color: rgb(133, 133, 98);
+}
+
+.product-price-logo{
+ font-size: 14px;
+ margin: 0px;
+ padding: 0px;
+}
+
+
+/*
+ Working on responsiveness 
+1. Make the view in list view && make it align horizontally => done
+2. Make the view visible on mobile so it it easy to add any thing to cart
+*/
+
+@media (max-width:600px){
+    .product-description{
+        display: none;
+    }
+    .product-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .product-price{
+        font-size: 17px;
+        margin-top: 8px;
+    }
+    .product-content-data{
+        margin-left: 8px;
+        width: 100%;
+    }
+    .product-title{
+        font-size: 13px;
+        margin: 0px;
+    }
+
+    .product-content-image{
+        width: 100%;
+    }
+
+    .product-quantity-button{
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+
+
+}

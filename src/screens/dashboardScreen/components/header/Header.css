@@ -1,0 +1,70 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    background-color: #2a2a2a; 
+    margin: 0px;
+    
+}
+
+.header-logo{
+    margin-left: 30px;
+    color: white;
+    font-family: "Tilt Wrap", cursive;
+    cursor: pointer;
+}
+
+.header-logo:hover{
+    color: rgb(225, 225, 62);
+}
+
+.header-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+.header-cart-logo{
+    color: white;
+    font-size: 20px;
+}
+
+.header-cart-count{
+    margin: 0px;
+    color: rgb(225, 225, 62);
+}
+
+.cart-products{
+    display: flex;
+    flex-direction: column;
+    border: 0.01px solid black;
+    max-height: 500px;
+    width:400px;
+    overflow: scroll;
+    z-index: 4;
+    position: absolute;
+    top: 60px;
+    right: 40px;
+}
+
+
+/*
+Working on responsiveness (Mobile)
+1. Disable the cart-products on hover in mobile => Done
+2. Work on cart margin from left
+*/
+
+@media (max-width:600px){
+    .cart-products{
+        display: none;
+    }
+    .header-cart{
+        margin-right: 30px;
+    }
+}
