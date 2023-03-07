@@ -1,8 +1,10 @@
 const getTotalPrice = (products) => {
   let sum = 0;
-  products.map((item) => {
-    if (item.isCart) sum += item.price.toFixed(2) * item.quantity.toFixed(2);
-  });
+
+  for (let val in products) {
+    if (products[val].isCart)
+      sum += products[val].price.toFixed(2) * products[val].quantity.toFixed(2);
+  }
 
   return sum.toFixed(2);
 };

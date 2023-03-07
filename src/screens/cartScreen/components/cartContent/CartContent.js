@@ -23,7 +23,7 @@ function CartContent() {
       <div className="cart-product-list">
         <h1>My Cart ({cartCount(products)})</h1>
         {products.map((item, index) => {
-          if (item.isCart) return <ItemList key={index} item={item} />;
+          return item.isCart && <ItemList key={index} item={item} />;
         })}
       </div>
       <div className="cart-summary">
@@ -33,8 +33,8 @@ function CartContent() {
           </h3>
           <div className="cart-summary-product-list">
             {products.map((item, index) => {
-              if (item.isCart)
-                return (
+              return (
+                item.isCart && (
                   <div
                     key={index}
                     className="cart-summary-product-list-content"
@@ -52,7 +52,8 @@ function CartContent() {
                       {item.price.toFixed(2) * item.quantity}
                     </h4>
                   </div>
-                );
+                )
+              );
             })}
           </div>
           <div className="cart-summary-footer">

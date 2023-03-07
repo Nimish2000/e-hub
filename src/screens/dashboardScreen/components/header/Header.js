@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cartCount from "../../../../utils/GetCartCount";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";

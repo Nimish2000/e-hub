@@ -1,8 +1,9 @@
 const getCartCount = (products) => {
   let cnt = 0;
-  products.map((item) => {
-    if (item.isCart) cnt++;
-  });
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].isCart) cnt++;
+  }
   return cnt;
 };
 

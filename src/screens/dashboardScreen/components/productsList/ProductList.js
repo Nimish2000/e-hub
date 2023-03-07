@@ -15,7 +15,6 @@ function ProductList(props) {
   useEffect(() => {
     let pList;
     if (query === "") {
-      console.log("The query is empty");
       pList = products;
     } else {
       pList = products.filter((val) => {
@@ -23,15 +22,19 @@ function ProductList(props) {
       });
       console.log(pList);
     }
-    setFilterList(pList);
-  }, [filter, products, query]);
 
-  const setFilterList = (pList) => {
     if (filter === "") setFilteredProductList(pList);
     else {
       setFilteredProductList(pList.filter((val) => val.category === filter));
     }
-  };
+  }, [filter, products, query]);
+
+  // const setFilterList = (pList) => {
+  //   if (filter === "") setFilteredProductList(pList);
+  //   else {
+  //     setFilteredProductList(pList.filter((val) => val.category === filter));
+  //   }
+  // };
 
   const handleFilter = () => {
     setShowFilter(!showFilter);
@@ -93,6 +96,7 @@ function ProductList(props) {
       <img
         src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result_still_2x.gif?compress=1&resize=400x300"
         height={"400px"}
+        alt={"No result found"}
       />
     </div>
   );

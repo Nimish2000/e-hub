@@ -12,7 +12,7 @@ function ItemList(props) {
   return (
     <div className="product-content">
       <div className="product-content-image">
-        <img className="product-image" src={props.item.image} />
+        <img className="product-image" src={props.item.image} alt={"Product"} />
       </div>
       <div className="product-content-data">
         <div className="product-details">
