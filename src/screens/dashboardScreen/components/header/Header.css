@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 55px;
     background-color: #2a2a2a; 
     margin: 0px;
@@ -18,6 +18,18 @@
 
 .header-logo:hover{
     color: rgb(225, 225, 62);
+}
+
+.header-searchbar{
+ width: 60%;
+ outline: none;
+ border-radius: 3px;
+ padding-left: 10px;
+ height: 25px;    
+}
+
+.header-search-icon{
+    display: none;
 }
 
 .header-cart{
@@ -57,14 +69,44 @@
 /*
 Working on responsiveness (Mobile)
 1. Disable the cart-products on hover in mobile => Done
-2. Work on cart margin from left
+2. Work on cart margin from left => done
+3. Work on coverting the searchbar to search-icon while mobile app
 */
 
 @media (max-width:600px){
+    .header{
+        justify-content: space-between;
+    }
+
+    .header-logo.invisible{
+        display: none;
+    }
+    
+    .header-searchbar.visible{
+        display: flex;
+        width: 95%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
     .cart-products{
+        display: none;
+    }
+    .header-searchbar{
         display: none;
     }
     .header-cart{
         margin-right: 30px;
+    }
+    .header-cart.invisible{
+        display: none;
+    }
+    .header-search-icon{
+        display: flex;
+        color: white;
+        position: absolute;
+        right: 80px;
+    }
+    .header-search-icon:hover{
+        color: rgb(225, 225, 62);
     }
 }

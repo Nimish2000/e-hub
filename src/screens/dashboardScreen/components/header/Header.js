@@ -1,39 +1,53 @@
 import React, { useState } from "react";
-import CartList from "./components/cartList/CartList";
-import productListData from "../../../../config/constants";
+import cartCount from "../../../../utils/GetCartCount";
+import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { queryChange } from "../../../../actions/QueryChange.action";
+import debounce from "lodash/debounce";
+import { useCallback } from "react";
 import "./Header.css";
 
 function Header(props) {
-  const [hover, setHover] = useState(false);
+  const products = useSelector((state) => state.handleCart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleCartFalse = () => {
-    setHover(false);
+  const handleCartClick = () => {
+    navigate("/cart");
   };
-  const handleCartTrue = () => {
-    if (props.cartList.length > 0) {
-      setHover(true);
-    }
+
+  const debounceSave = useCallback(
+    debounce((query) => dispatch(queryChange(query)), 500),
+    []
+  );
+
+  const handleQueryChange = (e) => {
+    debounceSave(e.target.value);
   };
+
   return (
     <div className="header">
-      <h3 className="header-logo">Tekion_Hub</h3>
-      <div className="header-cart" onMouseOver={handleCartTrue}>
-        <h6 className="header-cart-count">{props.cartList.length || 0}</h6>
-        <i className="fa-solid fa-cart-shopping header-cart-logo"></i>
-        {hover && props.cartList.length > 0 && (
-          <div className="cart-products" onMouseLeave={handleCartFalse}>
-            {props.cartList.map((item, index) => {
-              return (
-                <CartList
-                  key={index}
-                  image={item.image}
-                  title={item.title}
-                  price={item.price}
-                />
-              );
-            })}
-          </div>
-        )}
+      <h3 className={`header-logo ${props.enableSearchBar ? "invisible" : ""}`}>
+        Tekion_Hub
+      </h3>
+      <input
+        className={`header-searchbar ${props.enableSearchBar ? "visible" : ""}`}
+        type="text"
+        placeholder=" Search Marketplace"
+        onChange={(e) => handleQueryChange(e)}
+      />
+      <i
+        className="fa-sharp fa-solid fa-magnifying-glass header-search-icon"
+        onClick={() => props.handleEnableSearchBar(true)}
+      />
+      <div
+        className={`header-cart ${props.enableSearchBar ? "invisible" : ""}`}
+      >
+        <h6 className="header-cart-count">{cartCount(products) || 0}</h6>
+        <i
+          className="fa-solid fa-cart-shopping header-cart-logo"
+          onClick={handleCartClick}
+        ></i>
       </div>
     </div>
   );

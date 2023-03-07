@@ -8,122 +8,62 @@
     font-size: 25px;
 }
 
-.product-content{
+.product-list-header{
     display: flex;
     flex-direction: row;
-    margin-left:4%;
-    margin-right: 4%;
-    margin-top: 5px;
-    border: 0.001px solid grey ;
-    border-radius: 3px;
-    padding: 10px;
+    align-items: baseline;
 }
-.product-content-image{
+
+.product-filter{
+    margin-left: 30px;
+    height: 20px;
+    padding: 5px;
+    width: 80px;
+    background-color: aliceblue;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    height: 200px;
-    width: 250px;
-    cursor: pointer;
-    align-self: flex-start;
-}
-
-.product-image{
-    height: 100%;
-    width: 100%;
-    background-color: #f8f8f8;
-    object-fit: contain;
- }
-
-.product-content-data{
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    margin-left: 20px;
-    padding-top: 10px;
-    width: calc(100% - 250px);
+    position: relative;
     cursor: pointer;
 }
 
-.product-quantity-button{
-    margin-bottom: 8px;
-    cursor: pointer;
-    background-color: grey;
-    color: white;
-    border-radius: 2px;
-    font-size: 15px;
-    width: fit-content;
+.empty-result{
+    display: flex;
+    align-items: center;
+    margin-top:60px;
+    justify-content: center;
 }
 
-.product-quantity-button-name{
-    margin: 5px;
-    font-size: 15px;
-}
-
-.product-quantity-button-name:hover{
-    color: rgb(225, 225, 62);
-}
-
-.product-title{
-    margin: 0px;
-}
-
-.product-description{
+.product-filter-list{
+    position: absolute;
+    top:35px;
+    max-height: 200px;
     overflow: scroll;
-    margin: 10px 0px 4px 0px;
 }
 
-.product-price{
-    margin: 3px 0px 0px 0px;
-    font-size: 17px;
-    color: rgb(133, 133, 98);
+.product-filter-data{
+    padding: 10px 0px 0px 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px solid black;
+    background-color: white;
+    justify-content: flex-start;
+    border-bottom: 0.5px solid black;
+    width: 150px;
+    cursor: pointer;
 }
 
-.product-price-logo{
- font-size: 14px;
- margin: 0px;
- padding: 0px;
+.product-filter-data:hover{
+    background-color: #f1f1f1;
 }
 
-
-/*
- Working on responsiveness 
-1. Make the view in list view && make it align horizontally => done
-2. Make the view visible on mobile so it it easy to add any thing to cart
-*/
-
-@media (max-width:600px){
-    .product-description{
-        display: none;
-    }
-    .product-content{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .product-price{
-        font-size: 17px;
-        margin-top: 8px;
-    }
-    .product-content-data{
-        margin-left: 8px;
-        width: 100%;
-    }
-    .product-title{
-        font-size: 13px;
-        margin: 0px;
-    }
-
-    .product-content-image{
-        width: 100%;
-    }
-
-    .product-quantity-button{
-        margin-top: 20px;
-        margin-bottom: 0px;
-    }
-
-
+.product-filter-data i{
+    color: rgb(124, 148, 148);
 }
+
+.product-filter-data p{
+    margin-left:10px;
+}
+

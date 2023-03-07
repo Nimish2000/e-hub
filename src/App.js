@@ -1,48 +1,21 @@
 import DashboardScreen from "./screens/dashboardScreen/DashboardScreen";
-import { useState } from "react";
-import productListData from "./config/constants";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartScreen from "./screens/cartScreen/CartScreen";
+import { Provider } from "react-redux";
+import store from "./store";
+
+store.subscribe(() => store.getState());
 
 function App() {
-  const [productList, setProductList] = useState(productListData);
-  const [cartList, setCartList] = useState([]);
-
-  const handleAddToCart = (id, updatedProductList) => {
-    let hasId = false;
-    cartList.map((item) => {
-      if (item.id === id) hasId = true;
-    });
-    if (!hasId) setCartList((prevVal) => [...prevVal, updatedProductList[id]]);
-    else {
-      let updatedCartList = cartList.map((item) => {
-        if (item.id === id)
-          return { ...item, quantity: updatedProductList[id].quantity };
-        else return item;
-      });
-
-      let filteredQuantityCartList = updatedCartList.filter((obj) => {
-        return obj.quantity > 0;
-      });
-      setCartList(filteredQuantityCartList);
-    }
-  };
-
-  const handleQuantity = (id, incr) => {
-    const updatedProductList = productList.map((item, index) => {
-      if (index === id && incr) return { ...item, quantity: item.quantity + 1 };
-      if (index === id && !incr)
-        return { ...item, quantity: item.quantity - 1 };
-      return item;
-    });
-    setProductList(updatedProductList);
-    handleAddToCart(id, updatedProductList);
-  };
-
   return (
-    <DashboardScreen
-      productList={productList}
-      cartList={cartList}
-      handleQuantity={handleQuantity}
-    />
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DashboardScreen />} />
+          <Route path="/cart" element={<CartScreen />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

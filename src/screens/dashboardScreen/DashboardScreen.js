@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import ProductList from "./components/productsList/ProductList";
-import Header from "./components/header/Header";
+import ProductList from "./components/productsList";
+import Header from "./components/header";
 
 function DashboardScreen(props) {
+  const [enableSearchBar, setEnableSearchBar] = useState(false);
+
+  const handleEnableSearchBar = (flag) => {
+    setEnableSearchBar(flag);
+  };
+
   return (
     <div>
-      <Header cartList={props.cartList} />
-      <ProductList
-        productList={props.productList}
-        cartList={props.cartList}
-        handleQuantity={props.handleQuantity}
+      <Header
+        enableSearchBar={enableSearchBar}
+        handleEnableSearchBar={handleEnableSearchBar}
       />
+      <ProductList handleEnableSearchBar={handleEnableSearchBar} />
     </div>
   );
 }

@@ -6,6 +6,8 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 12_221,
+    category: "Mobile",
+    isCart: false,
   },
   {
     id: 1,
@@ -15,6 +17,8 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     price: 33_250,
     quantity: 0,
+    category: "Washing Machine",
+    isCart: false,
   },
   {
     id: 2,
@@ -23,6 +27,7 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 340,
+    isCart: false,
   },
   {
     id: 3,
@@ -32,6 +37,7 @@ const productListData = [
       "Best watch in the market to deal with sheer pace and cope up witht the growing world. `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics",
     price: 22_350,
     quantity: 0,
+    isCart: false,
   },
   {
     id: 4,
@@ -40,6 +46,7 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 4_210,
+    isCart: false,
   },
   {
     id: 5,
@@ -48,6 +55,7 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 10_340,
+    isCart: false,
   },
   {
     id: 6,
@@ -56,6 +64,8 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 17_000,
+    category: "Mobile",
+    isCart: false,
   },
   {
     id: 7,
@@ -64,6 +74,7 @@ const productListData = [
     description: `Processor & OS: 12th Gen Intel Core Processor i7-1260P (12 Cores: 4P + 8E, P: 2.1 up to 4.7 GHz / E: 1.5 up to 3.4 GHz), L3 Cache 18MB / Window 11;Memory: 16 GB LPDDR5 (Dual Channel, 5200MHz)/ Storage: 512 GB SSD M.2(2280) Dual SSD slots / Graphic: Intel Iris Xe Graphics`,
     quantity: 0,
     price: 1340,
+    isCart: false,
   },
 ];
 
