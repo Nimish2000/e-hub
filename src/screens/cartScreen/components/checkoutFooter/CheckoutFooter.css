@@ -1,0 +1,48 @@
+.checkout-footer-button{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    background-color:rgb(248, 244, 244);
+    width: 100%;   
+}
+
+
+.checkout-footer-subtotal{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-left: 15px;
+}
+
+.checkout-footer-subtotal h4{
+    margin-left: 6px;
+    color: grey;
+}
+
+
+.checkout-button-footer{
+    display: flex;
+    height:33px;
+    width:100px;
+    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(6, 139, 6);
+    border: 1px solid rgb(175, 171, 171);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.checkout-button-footer h4{
+    color: rgb(240, 240, 239);
+}
+
+@media (max-width:600px){
+    .checkout-footer-button{
+        display: flex;
+    }
+}

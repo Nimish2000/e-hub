@@ -7,7 +7,6 @@ import { decrement } from "../../actions/AddToCart.action.js";
 
 function ItemList(props) {
   let flag = true;
-  const products = useSelector((state) => state.handleCart);
   const dispatch = useDispatch();
   return (
     <div className="product-content">
@@ -16,14 +15,7 @@ function ItemList(props) {
       </div>
       <div className="product-content-data">
         <div className="product-details">
-          <h3
-            className="product-title"
-            onClick={() => {
-              console.log(products);
-            }}
-          >
-            {props.item.title}
-          </h3>
+          <h3 className="product-title">{props.item.title}</h3>
           <h2 className="product-price">
             <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
             {props.item.price}

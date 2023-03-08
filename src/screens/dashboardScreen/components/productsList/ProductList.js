@@ -20,7 +20,6 @@ function ProductList(props) {
       pList = products.filter((val) => {
         return val.title.toLowerCase().includes(query.trim().toLowerCase());
       });
-      console.log(pList);
     }
 
     if (filter === "") setFilteredProductList(pList);
@@ -28,13 +27,6 @@ function ProductList(props) {
       setFilteredProductList(pList.filter((val) => val.category === filter));
     }
   }, [filter, products, query]);
-
-  // const setFilterList = (pList) => {
-  //   if (filter === "") setFilteredProductList(pList);
-  //   else {
-  //     setFilteredProductList(pList.filter((val) => val.category === filter));
-  //   }
-  // };
 
   const handleFilter = () => {
     setShowFilter(!showFilter);

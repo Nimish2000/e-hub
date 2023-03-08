@@ -21,6 +21,7 @@
     background-color: gray;
     color: white;
     margin-bottom: 0px;
+    cursor: pointer;
 }
 
 .container i{
@@ -30,4 +31,11 @@
 
 .container:hover{
     color: rgb(225, 225, 62);
+}
+
+
+@media (max-width:600px){
+    .container{
+        cursor: none;
+    }
 }

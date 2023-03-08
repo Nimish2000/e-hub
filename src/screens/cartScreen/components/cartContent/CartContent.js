@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ItemList from "../../../../components/itemList/ItemList";
 import cartCount from "../../../../utils/GetCartCount";
 import getTotalPrice from "../../../../utils/GetTotalPrice";
+import CheckoutFooter from "../checkoutFooter/CheckoutFooter";
 import "./CartContent.css";
 
 function CartContent() {
@@ -72,6 +73,7 @@ function CartContent() {
           </div>
         </div>
       </div>
+      <CheckoutFooter className="checkout-footer" />
     </div>
   );
 }
