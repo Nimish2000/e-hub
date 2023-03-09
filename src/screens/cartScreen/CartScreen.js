@@ -7,7 +7,11 @@ import getCartCount from "../../utils/GetCartCount";
 function CartScreen() {
   const products = useSelector((state) => state.handleCart);
 
-  return getCartCount(products) ? <CartContent /> : <EmptyCart />;
+  const handleCartCount = () => {
+    return getCartCount(products);
+  };
+
+  return handleCartCount(products) ? <CartContent /> : <EmptyCart />;
 }
 
 export default CartScreen;

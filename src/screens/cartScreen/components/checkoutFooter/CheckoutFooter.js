@@ -5,16 +5,21 @@ import "./CheckoutFooter.css";
 
 function CheckoutFooter() {
   const products = useSelector((state) => state.handleCart);
+
   const handleCheckoutSubmit = () => {
     alert("Order Placed");
   };
+
+  const handleTotalPrice = () => {
+    return getTotalPrice(products);
+  };
+
   return (
     <div className="checkout-footer-button">
       <div className="checkout-footer-subtotal">
-        <h4>
-          {"Subtotal : "} <i className="fa-solid fa-indian-rupee-sign"></i>
-        </h4>
-        <h4> {getTotalPrice(products)}</h4>
+        <span>Subtotal : </span>
+        <i className="fa-solid fa-indian-rupee-sign" />
+        <h4> {handleTotalPrice(products)}</h4>
       </div>
       <div className="checkout-button-footer" onClick={handleCheckoutSubmit}>
         <h4>Checkout</h4>
@@ -24,9 +29,3 @@ function CheckoutFooter() {
 }
 
 export default CheckoutFooter;
-
-/*
-
-1. Done with making the screen responsive 
-
-*/

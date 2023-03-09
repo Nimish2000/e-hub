@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import QuantityButton from "../quantityButton";
+import QuantityButton from "./components/quantityButton";
+import AddToCartButton from "./components/addToCartButton";
 import { increment, decrement } from "../../actions/AddToCart.action.js";
 import "./ItemList.css";
 
-function ItemList({ item }) {
+function ItemList({ product }) {
   const dispatch = useDispatch();
 
   const handleIncrementQuantity = (id) => {
@@ -18,39 +19,28 @@ function ItemList({ item }) {
   return (
     <div className="product-content">
       <div className="product-content-image">
-        <img className="product-image" src={item.image} alt={"Product"} />
+        <img className="product-image" src={product.image} alt={"Product"} />
       </div>
       <div className="product-content-data">
         <div className="product-details">
-          <h3 className="product-title">{item.title}</h3>
+          <h3 className="product-title">{product.title}</h3>
           <h2 className="product-price">
             <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
-            {item.price}
+            {product.price}
           </h2>
-          <p className="product-description">{item.description}</p>
+          <p className="product-description">{product.description}</p>
         </div>
-        {item.quantity > 0 ? (
-          <div className="product-footer">
-            <QuantityButton
-              className="product-quantity-button"
-              decrementCount={() => handleDecrementQuantity(item.id)}
-              incrementCount={() => handleIncrementQuantity(item.id)}
-              quantity={item.quantity}
-            />
-
-            <h4>
-              Subtotal : {"   "}
-              <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
-              {item.price.toFixed(2) * item.quantity}
-            </h4>
-          </div>
+        {product.quantity > 0 ? (
+          <QuantityButton
+            decrementCount={() => handleDecrementQuantity(product.id)}
+            incrementCount={() => handleIncrementQuantity(product.id)}
+            quantity={product.quantity}
+          />
         ) : (
-          <div
-            className="product-quantity-button"
-            onClick={() => handleIncrementQuantity(item.id)}
-          >
-            <h3 className="product-quantity-button-name">Add To Cart</h3>
-          </div>
+          <AddToCartButton
+            handleIncrementQuantity={handleIncrementQuantity}
+            id={product.id}
+          />
         )}
       </div>
     </div>

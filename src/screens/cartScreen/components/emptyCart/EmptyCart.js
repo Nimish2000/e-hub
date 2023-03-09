@@ -4,9 +4,11 @@ import "./EmptyCart.css";
 
 function EmptyCart() {
   const navigate = useNavigate();
+
   const handleEmptyCartClick = () => {
     navigate(-1);
   };
+
   return (
     <div className="empty-cart">
       <img

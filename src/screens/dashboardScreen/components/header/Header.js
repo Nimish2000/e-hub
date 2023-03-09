@@ -24,18 +24,22 @@ function Header() {
     debounceSave(e.target.value);
   };
 
+  const handleCartCount = () => {
+    return getCartCount(products);
+  };
+
   return (
     <div className="header">
-      <h3 className={`header-logo`}>Tekion_Hub</h3>
+      <h3 className="header-logo">Tekion_Hub</h3>
       <input
-        className={`header-searchbar`}
+        className="header-searchbar"
         type="text"
         placeholder=" Search Marketplace"
         onChange={(e) => handleQueryChange(e)}
       />
       <i className="fa-sharp fa-solid fa-magnifying-glass header-search-icon" />
-      <div className={`header-cart `}>
-        <h6 className="header-cart-count">{getCartCount(products) || 0}</h6>
+      <div className="header-cart ">
+        <h6 className="header-cart-count">{handleCartCount()}</h6>
         <i
           className="fa-solid fa-cart-shopping header-cart-logo"
           onClick={handleCartClick}

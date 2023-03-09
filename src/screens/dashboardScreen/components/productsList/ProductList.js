@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ItemList from "../../../../components/itemList";
+import FilterList from "./components/filterList";
+import EmptyResult from "./components/emptyResult";
 import getFilterCount from "../../../../utils/GetFilterCount";
 import "./ProductList.css";
 
@@ -27,7 +29,7 @@ function ProductList() {
     }
   }, [filter, products, query]);
 
-  const handleFilter = () => {
+  const handleShowFilter = () => {
     setShowFilter(!showFilter);
   };
 
@@ -35,59 +37,28 @@ function ProductList() {
     setFilter(filterName);
   };
 
+  const handleShowFilterCount = () => {
+    return getFilterCount(products, filter);
+  };
+
   return filteredProductList.length ? (
     <div className="product-list">
       <div className="product-list-header">
         <h2 className="product-tag">
-          Products({getFilterCount(products, filter)})
+          Products({handleShowFilterCount(products, filter)})
         </h2>
-        <div className="product-filter" onClick={handleFilter}>
-          <i className="fa-solid fa-filter"></i>
-          <p>Filter</p>
-          {!showFilter ? (
-            <i className="fa-solid fa-chevron-down"></i>
-          ) : (
-            <i className="fa-solid fa-chevron-up"></i>
-          )}
-          {showFilter && (
-            <div className="product-filter-list">
-              <div
-                className="product-filter-data"
-                onClick={() => handleFilterName("Mobile")}
-              >
-                <i className="fa-solid fa-mobile"></i>
-                <p>Mobile</p>
-              </div>
-              <div
-                className="product-filter-data"
-                onClick={() => handleFilterName("Washing Machine")}
-              >
-                <i className="fa-solid fa-lightbulb"></i>
-                <p>Washing Machine</p>
-              </div>
-              <div
-                className="product-filter-data"
-                onClick={() => handleFilterName("")}
-              >
-                <i className="fa-solid fa-xmark"></i>
-                <p>None</p>
-              </div>
-            </div>
-          )}
-        </div>
+        <FilterList
+          handleShowFilter={handleShowFilter}
+          showFilter={showFilter}
+          handleFilterName={handleFilterName}
+        />
       </div>
       {filteredProductList.map((item) => {
-        return <ItemList key={item.id} item={item} />;
+        return <ItemList key={item.id} product={item} />;
       })}
     </div>
   ) : (
-    <div className="empty-result">
-      <img
-        src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result_still_2x.gif?compress=1&resize=400x300"
-        height={"400px"}
-        alt={"No result found"}
-      />
-    </div>
+    <EmptyResult />
   );
 }
 
