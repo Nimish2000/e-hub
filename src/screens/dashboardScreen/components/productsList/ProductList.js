@@ -4,7 +4,7 @@ import ItemList from "../../../../components/itemList";
 import getFilterCount from "../../../../utils/GetFilterCount";
 import "./ProductList.css";
 
-function ProductList(props) {
+function ProductList() {
   const products = useSelector((state) => state.handleCart);
   const query = useSelector((state) => state.handleQueryChange);
   const [filteredProductList, setFilteredProductList] = useState(products);
@@ -35,11 +35,8 @@ function ProductList(props) {
     setFilter(filterName);
   };
 
-  return filteredProductList.length > 0 ? (
-    <div
-      className="product-list"
-      onMouseDown={() => props.handleEnableSearchBar(false)}
-    >
+  return filteredProductList.length ? (
+    <div className="product-list">
       <div className="product-list-header">
         <h2 className="product-tag">
           Products({getFilterCount(products, filter)})

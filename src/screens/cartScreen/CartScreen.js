@@ -7,7 +7,7 @@ import getCartCount from "../../utils/GetCartCount";
 function CartScreen() {
   const products = useSelector((state) => state.handleCart);
 
-  return getCartCount(products) > 0 ? <CartContent /> : <EmptyCart />;
+  return getCartCount(products) ? <CartContent /> : <EmptyCart />;
 }
 
 export default CartScreen;

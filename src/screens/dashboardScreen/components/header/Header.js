@@ -6,7 +6,7 @@ import { queryChange } from "../../../../actions/QueryChange.action";
 import getCartCount from "../../../../utils/GetCartCount";
 import "./Header.css";
 
-function Header(props) {
+function Header() {
   const products = useSelector((state) => state.handleCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,22 +26,15 @@ function Header(props) {
 
   return (
     <div className="header">
-      <h3 className={`header-logo ${props.enableSearchBar ? "invisible" : ""}`}>
-        Tekion_Hub
-      </h3>
+      <h3 className={`header-logo`}>Tekion_Hub</h3>
       <input
-        className={`header-searchbar ${props.enableSearchBar ? "visible" : ""}`}
+        className={`header-searchbar`}
         type="text"
         placeholder=" Search Marketplace"
         onChange={(e) => handleQueryChange(e)}
       />
-      <i
-        className="fa-sharp fa-solid fa-magnifying-glass header-search-icon"
-        onClick={() => props.handleEnableSearchBar(true)}
-      />
-      <div
-        className={`header-cart ${props.enableSearchBar ? "invisible" : ""}`}
-      >
+      <i className="fa-sharp fa-solid fa-magnifying-glass header-search-icon" />
+      <div className={`header-cart `}>
         <h6 className="header-cart-count">{getCartCount(products) || 0}</h6>
         <i
           className="fa-solid fa-cart-shopping header-cart-logo"

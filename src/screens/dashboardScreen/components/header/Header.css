@@ -73,16 +73,13 @@
     justify-content: space-between;
   }
 
-  .header-logo.invisible {
-    display: none;
-  }
-
   .header-searchbar.visible {
     display: flex;
     width: 95%;
     margin-left: 10px;
     margin-right: 10px;
   }
+
   .cart-products {
     display: none;
   }
