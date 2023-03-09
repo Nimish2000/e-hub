@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ItemList from "../../../../components/itemList/ItemList";
-import CheckoutFooter from "../checkoutFooter/CheckoutFooter";
+import ItemList from "../../../../components/itemList";
+import CheckoutFooter from "../checkoutFooter";
 import cartCount from "../../../../utils/GetCartCount";
 import getTotalPrice from "../../../../utils/GetTotalPrice";
 import "./CartContent.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import EmptyCart from "./components/emptyCart/EmptyCart";
-import CartContent from "./components/cartContent/CartContent";
+import EmptyCart from "./components/emptyCart";
+import CartContent from "./components/cartContent";
 import getCartCount from "../../utils/GetCartCount";
 
 function CartScreen() {
