@@ -3,8 +3,8 @@ const getFilterCount = (products, category) => {
 
   let cnt = 0;
 
-  for (let val in products) {
-    if (products[val].category === category) cnt++;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].category === category) cnt++;
   }
 
   return cnt;

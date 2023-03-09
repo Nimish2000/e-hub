@@ -1,49 +1,53 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import QuantityButton from "../quantityButton";
+import { increment, decrement } from "../../actions/AddToCart.action.js";
 import "./ItemList.css";
-import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../../actions/AddToCart.action.js";
-import { decrement } from "../../actions/AddToCart.action.js";
 
-function ItemList(props) {
-  let flag = true;
+function ItemList({ item }) {
   const dispatch = useDispatch();
+
+  const handleIncrementQuantity = (id) => {
+    dispatch(increment(id));
+  };
+
+  const handleDecrementQuantity = (id) => {
+    dispatch(decrement(id));
+  };
+
   return (
     <div className="product-content">
       <div className="product-content-image">
-        <img className="product-image" src={props.item.image} alt={"Product"} />
+        <img className="product-image" src={item.image} alt={"Product"} />
       </div>
       <div className="product-content-data">
         <div className="product-details">
-          <h3 className="product-title">{props.item.title}</h3>
+          <h3 className="product-title">{item.title}</h3>
           <h2 className="product-price">
             <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
-            {props.item.price}
+            {item.price}
           </h2>
-          <p className="product-description">{props.item.description}</p>
+          <p className="product-description">{item.description}</p>
         </div>
-        {props.item.quantity > 0 ? (
+        {item.quantity > 0 ? (
           <div className="product-footer">
             <QuantityButton
               className="product-quantity-button"
-              decrementCount={() => dispatch(decrement(props.item.id))}
-              incrementCount={() => dispatch(increment(props.item.id))}
-              quantity={props.item.quantity}
+              decrementCount={() => handleDecrementQuantity(item.id)}
+              incrementCount={() => handleIncrementQuantity(item.id)}
+              quantity={item.quantity}
             />
-            {flag && (
-              <h4>
-                Subtotal : {"   "}
-                <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
-                {props.item.price.toFixed(2) * props.item.quantity}
-              </h4>
-            )}
+
+            <h4>
+              Subtotal : {"   "}
+              <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
+              {item.price.toFixed(2) * item.quantity}
+            </h4>
           </div>
         ) : (
           <div
             className="product-quantity-button"
-            onClick={() => {
-              dispatch(increment(props.item.id));
-            }}
+            onClick={() => handleIncrementQuantity(item.id)}
           >
             <h3 className="product-quantity-button-name">Add To Cart</h3>
           </div>

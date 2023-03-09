@@ -1,13 +1,12 @@
 import React from "react";
-import "./CheckoutFooter.css";
 import { useSelector } from "react-redux";
 import getTotalPrice from "../../../../utils/GetTotalPrice";
+import "./CheckoutFooter.css";
 
 function CheckoutFooter() {
   const products = useSelector((state) => state.handleCart);
   const handleCheckoutSubmit = () => {
     alert("Order Placed");
-    console.log("Data Saved");
   };
   return (
     <div className="checkout-footer-button">

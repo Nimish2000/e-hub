@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ItemList from "../../../../components/itemList/ItemList";
+import CheckoutFooter from "../checkoutFooter/CheckoutFooter";
 import cartCount from "../../../../utils/GetCartCount";
 import getTotalPrice from "../../../../utils/GetTotalPrice";
-import CheckoutFooter from "../checkoutFooter/CheckoutFooter";
 import "./CartContent.css";
 
 function CartContent() {
@@ -15,7 +15,6 @@ function CartContent() {
 
     setTimeout(() => {
       setIsLoading(false);
-      localStorage.setItem("cart-data", "saved");
     }, 4000);
   };
 
@@ -23,8 +22,8 @@ function CartContent() {
     <div className="cart-content">
       <div className="cart-product-list">
         <h1>My Cart ({cartCount(products)})</h1>
-        {products.map((item, index) => {
-          return item.isCart && <ItemList key={index} item={item} />;
+        {products.map((item) => {
+          return item.isCart && <ItemList key={item.id} item={item} />;
         })}
       </div>
       <div className="cart-summary">
@@ -33,11 +32,11 @@ function CartContent() {
             <i className="fa-solid fa-cart-shopping"></i> Cart Summary
           </h3>
           <div className="cart-summary-product-list">
-            {products.map((item, index) => {
+            {products.map((item) => {
               return (
                 item.isCart && (
                   <div
-                    key={index}
+                    key={item.id}
                     className="cart-summary-product-list-content"
                   >
                     <div>
@@ -79,9 +78,3 @@ function CartContent() {
 }
 
 export default CartContent;
-
-/*
-1. Refactor the item list component so it can be suitable for responsiveness
-2. Design the cart list and make the Checkout page
-3. Implement search using debounce and show a loader when there is a search (500ms)
-*/

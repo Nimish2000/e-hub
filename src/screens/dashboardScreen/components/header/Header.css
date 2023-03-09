@@ -1,117 +1,107 @@
-.header{
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    top:0px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-    height: 55px;
-    background-color: #2a2a2a; 
-    margin: 0px;
-    z-index: 3;
-    
+.header {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  height: 55px;
+  background-color: #2a2a2a;
+  margin: 0px;
+  z-index: 3;
 }
 
-.header-logo{
-    margin-left: 30px;
-    color: white;
-    font-family: "Tilt Wrap", cursive;
-    cursor: pointer;
+.header-logo {
+  margin-left: 30px;
+  color: white;
+  font-family: "Tilt Wrap", cursive;
+  cursor: pointer;
 }
 
-.header-logo:hover{
-    color: rgb(225, 225, 62);
+.header-logo:hover {
+  color: rgb(225, 225, 62);
 }
 
-.header-searchbar{
- width: 60%;
- outline: none;
- border-radius: 3px;
- padding-left: 10px;
- height: 25px;    
+.header-searchbar {
+  width: 60%;
+  outline: none;
+  border-radius: 3px;
+  padding-left: 10px;
+  height: 25px;
 }
 
-.header-search-icon{
+.header-search-icon {
+  display: none;
+}
+
+.header-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 50px;
+  margin-bottom: 10px;
+}
+
+.header-cart-logo {
+  color: white;
+  font-size: 20px;
+}
+
+.header-cart-count {
+  margin: 0px;
+  color: rgb(225, 225, 62);
+}
+
+.cart-products {
+  display: flex;
+  flex-direction: column;
+  border: 0.01px solid black;
+  max-height: 500px;
+  width: 400px;
+  overflow: scroll;
+  z-index: 4;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+}
+
+@media (max-width: 600px) {
+  .header {
+    justify-content: space-between;
+  }
+
+  .header-logo.invisible {
     display: none;
-}
+  }
 
-.header-cart{
+  .header-searchbar.visible {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 50px;
-    margin-bottom: 10px;
-}
-
-.header-cart-logo{
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .cart-products {
+    display: none;
+  }
+  .header-searchbar {
+    display: none;
+  }
+  .header-cart {
+    margin-right: 30px;
+  }
+  .header-cart.invisible {
+    display: none;
+  }
+  .header-search-icon {
+    display: flex;
     color: white;
-    font-size: 20px;
-}
-
-.header-cart-count{
-    margin: 0px;
-    color: rgb(225, 225, 62);
-}
-
-.cart-products{
-    display: flex;
-    flex-direction: column;
-    border: 0.01px solid black;
-    max-height: 500px;
-    width:400px;
-    overflow: scroll;
-    z-index: 4;
     position: absolute;
-    top: 60px;
-    right: 40px;
-}
-
-
-
-/*
-Working on responsiveness (Mobile)
-1. Disable the cart-products on hover in mobile => Done
-2. Work on cart margin from left => done
-3. Work on coverting the searchbar to search-icon while mobile app
-*/
-
-@media (max-width:600px){
-    .header{
-        justify-content: space-between;
-    }
-
-    .header-logo.invisible{
-        display: none;
-    }
-    
-    .header-searchbar.visible{
-        display: flex;
-        width: 95%;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .cart-products{
-        display: none;
-    }
-    .header-searchbar{
-        display: none;
-    }
-    .header-cart{
-        margin-right: 30px;
-    }
-    .header-cart.invisible{
-        display: none;
-    }
-    .header-search-icon{
-        display: flex;
-        color: white;
-        position: absolute;
-        right: 80px;
-    }
-    .header-search-icon:hover{
-        color: rgb(225, 225, 62);
-    }
+    right: 80px;
+  }
+  .header-search-icon:hover {
+    color: rgb(225, 225, 62);
+  }
 }

@@ -1,10 +1,9 @@
-import React from "react";
-import cartCount from "../../../../utils/GetCartCount";
+import React, { useCallback } from "react";
+import debounce from "lodash/debounce";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { queryChange } from "../../../../actions/QueryChange.action";
-import debounce from "lodash/debounce";
-import { useCallback } from "react";
+import getCartCount from "../../../../utils/GetCartCount";
 import "./Header.css";
 
 function Header(props) {
@@ -43,7 +42,7 @@ function Header(props) {
       <div
         className={`header-cart ${props.enableSearchBar ? "invisible" : ""}`}
       >
-        <h6 className="header-cart-count">{cartCount(products) || 0}</h6>
+        <h6 className="header-cart-count">{getCartCount(products) || 0}</h6>
         <i
           className="fa-solid fa-cart-shopping header-cart-logo"
           onClick={handleCartClick}

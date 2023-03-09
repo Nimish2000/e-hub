@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ItemList from "../../../../components/itemList";
 import getFilterCount from "../../../../utils/GetFilterCount";
-
 import "./ProductList.css";
 
 function ProductList(props) {
@@ -13,23 +12,27 @@ function ProductList(props) {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    let pList;
+    let tmpList;
     if (query === "") {
-      pList = products;
+      tmpList = products;
     } else {
-      pList = products.filter((val) => {
+      tmpList = products.filter((val) => {
         return val.title.toLowerCase().includes(query.trim().toLowerCase());
       });
     }
 
-    if (filter === "") setFilteredProductList(pList);
+    if (filter === "") setFilteredProductList(tmpList);
     else {
-      setFilteredProductList(pList.filter((val) => val.category === filter));
+      setFilteredProductList(tmpList.filter((val) => val.category === filter));
     }
   }, [filter, products, query]);
 
   const handleFilter = () => {
     setShowFilter(!showFilter);
+  };
+
+  const handleFilterName = (filterName) => {
+    setFilter(filterName);
   };
 
   return filteredProductList.length > 0 ? (
@@ -42,35 +45,32 @@ function ProductList(props) {
           Products({getFilterCount(products, filter)})
         </h2>
         <div className="product-filter" onClick={handleFilter}>
-          <i style={{ color: "#9090ca" }} className="fa-solid fa-filter"></i>
+          <i className="fa-solid fa-filter"></i>
           <p>Filter</p>
           {!showFilter ? (
-            <i
-              style={{ color: "gray" }}
-              className="fa-solid fa-chevron-down"
-            ></i>
+            <i className="fa-solid fa-chevron-down"></i>
           ) : (
-            <i style={{ color: "gray" }} className="fa-solid fa-chevron-up"></i>
+            <i className="fa-solid fa-chevron-up"></i>
           )}
           {showFilter && (
             <div className="product-filter-list">
               <div
                 className="product-filter-data"
-                onClick={() => setFilter("Mobile")}
+                onClick={() => handleFilterName("Mobile")}
               >
                 <i className="fa-solid fa-mobile"></i>
                 <p>Mobile</p>
               </div>
               <div
                 className="product-filter-data"
-                onClick={() => setFilter("Washing Machine")}
+                onClick={() => handleFilterName("Washing Machine")}
               >
                 <i className="fa-solid fa-lightbulb"></i>
                 <p>Washing Machine</p>
               </div>
               <div
                 className="product-filter-data"
-                onClick={() => setFilter("")}
+                onClick={() => handleFilterName("")}
               >
                 <i className="fa-solid fa-xmark"></i>
                 <p>None</p>
@@ -79,8 +79,8 @@ function ProductList(props) {
           )}
         </div>
       </div>
-      {filteredProductList.map((item, index) => {
-        return <ItemList key={item.id} item={item} isCart={false} />;
+      {filteredProductList.map((item) => {
+        return <ItemList key={item.id} item={item} />;
       })}
     </div>
   ) : (

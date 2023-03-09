@@ -1,7 +1,7 @@
-import DashboardScreen from "./screens/dashboardScreen/DashboardScreen";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CartScreen from "./screens/cartScreen/CartScreen";
 import { Provider } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardScreen from "./screens/dashboardScreen/DashboardScreen";
+import CartScreen from "./screens/cartScreen/CartScreen";
 import store from "./store";
 
 store.subscribe(() => store.getState());
