@@ -2,7 +2,7 @@ import React from "react";
 import "./FilterList.css";
 
 function FilterList({ showFilter, handleShowFilter, handleFilterName }) {
-  const filters = ["Mobile", "Washing Machine", ""];
+  const filters = ["Mobile", "Washing Machine", "All"];
 
   return (
     <div className="product-filter" onClick={handleShowFilter}>
@@ -22,7 +22,7 @@ function FilterList({ showFilter, handleShowFilter, handleFilterName }) {
                 onClick={() => handleFilterName(item)}
               >
                 <i className="fa-solid fa-mobile"></i>
-                <p>{item || "None"}</p>
+                <p>{item}</p>
               </div>
             );
           })}

@@ -11,7 +11,7 @@ function ProductList() {
   const query = useSelector((state) => state.handleQueryChange);
   const [filteredProductList, setFilteredProductList] = useState(products);
   const [showFilter, setShowFilter] = useState(false);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     let tmpList;
@@ -23,7 +23,7 @@ function ProductList() {
       });
     }
 
-    if (filter === "") setFilteredProductList(tmpList);
+    if (filter === "All") setFilteredProductList(tmpList);
     else {
       setFilteredProductList(tmpList.filter((val) => val.category === filter));
     }

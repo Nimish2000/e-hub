@@ -1,5 +1,5 @@
 const getFilterCount = (products, category) => {
-  if (category === "") return products.length;
+  if (category === "All") return products.length;
 
   let cnt = 0;
 
