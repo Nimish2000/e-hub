@@ -40,7 +40,7 @@ function ItemList({ product }) {
       </div>
       <div className="product-content-data">
         <div className="product-details">
-          <h3 className="product-title">{product.title}</h3>
+          <p>{product.title}</p>
           <h2 className="product-price">
             <i className="fa-solid fa-indian-rupee-sign product-price-logo"></i>{" "}
             {product.price}

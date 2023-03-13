@@ -1,5 +1,5 @@
 .product-filter {
-  margin-left: 30px;
+  margin: 0px 0px 0px 30px;
   height: 20px;
   padding: 5px;
   width: 80px;
@@ -34,12 +34,4 @@
 
 .product-filter-data:hover {
   background-color: #f1f1f1;
-}
-
-.product-filter-data i {
-  color: rgb(124, 148, 148);
-}
-
-.product-filter-data p {
-  margin-left: 10px;
 }

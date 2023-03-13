@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import map from "lodash.map";
+import filters from "lodash.filter";
 
 import ItemList from "../../../../components/itemList";
 import FilterList from "./components/filterList";
 import EmptyResult from "./components/emptyResult";
 
-import getFilterCount from "../../../../utils/GetFilterCount";
+import getFilterCount from "../../../../utils/GetFilterCount.utility";
 import "./ProductList.css";
 
 function ProductList() {
@@ -20,7 +21,7 @@ function ProductList() {
     if (!query) {
       return products;
     } else {
-      return products.filter((val) => {
+      return filters(products, (val) => {
         return val.title.toLowerCase().includes(query.trim().toLowerCase());
       });
     }
@@ -29,7 +30,7 @@ function ProductList() {
   const filterProductList = (tmpList) => {
     if (filter === "All") return tmpList;
     else {
-      return tmpList.filter((val) => val.category === filter);
+      return filters(tmpList, (val) => val.category === filter);
     }
   };
   useEffect(() => {

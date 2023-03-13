@@ -8,16 +8,17 @@
   color: rgb(135, 126, 126);
 }
 
-.container {
+.product-quantity-selector-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 50%;
   height: 20px;
   width: 20px;
   background-color: gray;
   color: white;
-  margin-bottom: 0px;
+  margin: 0px 6px 0px 6px;
   cursor: pointer;
 }
 

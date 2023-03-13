@@ -1,11 +1,10 @@
 .product-quantity-button {
-  margin-bottom: 8px;
+  margin: 0px 0px 8px 0px;
+  border: none;
   cursor: pointer;
   background-color: grey;
   color: white;
-  border-radius: 2px;
   font-size: 15px;
-  width: fit-content;
 }
 
 .product-quantity-button-name {

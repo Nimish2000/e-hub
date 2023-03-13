@@ -6,7 +6,7 @@ import "./EmptyResult.css";
 function EmptyResult() {
   return (
     <div className="empty-result">
-      <img src={emptyResultImage} height={"400px"} alt={"No result found"} />
+      <img src={emptyResultImage} alt={"No result found"} />
     </div>
   );
 }

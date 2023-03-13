@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { queryChange } from "../../../../actions/QueryChange.action";
 import { getCartCount } from "../../../../utils/GetCartCount.utility";
-
 import "./Header.css";
 
 function Header() {
@@ -37,10 +36,9 @@ function Header() {
       <i className="fa-sharp fa-solid fa-magnifying-glass header-search-icon" />
       <div className="header-cart ">
         <h6 className="header-cart-count">{getCartCount(products)}</h6>
-        <i
-          className="fa-solid fa-cart-shopping header-cart-logo"
-          onClick={handleCartClick}
-        ></i>
+        <button className=" header-cart-logo" onClick={handleCartClick}>
+          <i className="fa-solid fa-cart-shopping" />
+        </button>
       </div>
     </div>
   );

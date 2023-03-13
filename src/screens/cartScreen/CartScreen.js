@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import EmptyCart from "./components/emptyCart";
 import CartContent from "./components/cartContent";
+
 import { getCartCount } from "../../utils/GetCartCount.utility";
 
 function CartScreen() {

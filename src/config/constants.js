@@ -78,5 +78,3 @@ export const productListData = [
   },
 ];
 export const filtersList = ["Mobile", "Washing Machine", "All"];
-
-export default productListData;
