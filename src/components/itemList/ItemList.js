@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
+
 import QuantityButton from "./components/quantityButton";
 import AddToCartButton from "./components/addToCartButton";
+
 import { increment, decrement } from "../../actions/AddToCart.action.js";
 import "./ItemList.css";
 
 function ItemList({ product }) {
   const dispatch = useDispatch();
 
-  const handleIncrementQuantity = (id) => {
+  const handleIncrementQuantity = (id) => () => {
     dispatch(increment(id));
   };
 
-  const handleDecrementQuantity = (id) => {
+  const handleDecrementQuantity = (id) => () => {
     dispatch(decrement(id));
   };
+
+  const ProductQuantityButton = useMemo(() => {
+    if (product.quantity)
+      return (
+        <QuantityButton
+          onDecrementCount={handleDecrementQuantity(product.id)}
+          onIncrementCount={handleIncrementQuantity(product.id)}
+          quantity={product.quantity}
+        />
+      );
+
+    return (
+      <AddToCartButton onIncrementCount={handleIncrementQuantity(product.id)} />
+    );
+  }, [product.quantity]);
 
   return (
     <div className="product-content">
@@ -30,18 +47,7 @@ function ItemList({ product }) {
           </h2>
           <p className="product-description">{product.description}</p>
         </div>
-        {product.quantity > 0 ? (
-          <QuantityButton
-            decrementCount={() => handleDecrementQuantity(product.id)}
-            incrementCount={() => handleIncrementQuantity(product.id)}
-            quantity={product.quantity}
-          />
-        ) : (
-          <AddToCartButton
-            handleIncrementQuantity={handleIncrementQuantity}
-            id={product.id}
-          />
-        )}
+        {ProductQuantityButton}
       </div>
     </div>
   );

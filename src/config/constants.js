@@ -1,4 +1,4 @@
-const productListData = [
+export const productListData = [
   {
     id: 0,
     image: "https://www.pngmart.com/files/22/Mi-PNG-HD-Isolated.png",
@@ -77,5 +77,6 @@ const productListData = [
     isCart: false,
   },
 ];
+export const filtersList = ["Mobile", "Washing Machine", "All"];
 
 export default productListData;

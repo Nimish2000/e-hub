@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
+import map from "lodash.map";
 import { useSelector } from "react-redux";
+
 import ItemList from "../../../../components/itemList";
 import CheckoutFooter from "../checkoutFooter";
 import CartSummary from "../cartSummary";
-import getCartCount from "../../../../utils/GetCartCount";
+
+import { getCartCount } from "../../../../utils/GetCartCount.utility";
 import "./CartContent.css";
 
 function CartContent() {
   const products = useSelector((state) => state.handleCart);
 
-  const handleCartCount = () => {
-    return getCartCount(products);
-  };
+  const ProductList = useMemo(() => {
+    return map(products, (product) => {
+      if (product.isCart)
+        return <ItemList key={product.id} product={product} />;
+    });
+  }, [products]);
 
   return (
     <div className="cart-content">
       <div className="cart-product-list">
-        <h1>My Cart ({handleCartCount(products)})</h1>
-        {products.map((product) => {
-          return (
-            product.isCart && <ItemList key={product.id} product={product} />
-          );
-        })}
+        <h1>My Cart ({getCartCount(products)})</h1>
+        {ProductList}
       </div>
       <CartSummary />
       <CheckoutFooter />

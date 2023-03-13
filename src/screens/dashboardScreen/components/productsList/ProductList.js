@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
+import map from "lodash.map";
+
 import ItemList from "../../../../components/itemList";
 import FilterList from "./components/filterList";
 import EmptyResult from "./components/emptyResult";
+
 import getFilterCount from "../../../../utils/GetFilterCount";
 import "./ProductList.css";
 
@@ -13,53 +16,60 @@ function ProductList() {
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState("All");
 
-  useEffect(() => {
-    let tmpList;
-    if (query === "") {
-      tmpList = products;
+  const queryProductList = () => {
+    if (!query) {
+      return products;
     } else {
-      tmpList = products.filter((val) => {
+      return products.filter((val) => {
         return val.title.toLowerCase().includes(query.trim().toLowerCase());
       });
     }
+  };
 
-    if (filter === "All") setFilteredProductList(tmpList);
+  const filterProductList = (tmpList) => {
+    if (filter === "All") return tmpList;
     else {
-      setFilteredProductList(tmpList.filter((val) => val.category === filter));
+      return tmpList.filter((val) => val.category === filter);
     }
+  };
+  useEffect(() => {
+    let tmpList = queryProductList();
+
+    setFilteredProductList(filterProductList(tmpList));
   }, [filter, products, query]);
 
   const handleShowFilter = () => {
     setShowFilter(!showFilter);
   };
 
-  const handleFilterName = (filterName) => {
+  const handleFilterName = (filterName) => () => {
     setFilter(filterName);
   };
 
-  const handleShowFilterCount = () => {
-    return getFilterCount(products, filter);
-  };
+  const FilterProductList = useMemo(() => {
+    return map(filteredProductList, (product) => {
+      return <ItemList key={product.id} product={product} />;
+    });
+  }, [filteredProductList]);
 
-  return filteredProductList.length ? (
-    <div className="product-list">
-      <div className="product-list-header">
-        <h2 className="product-tag">
-          Products({handleShowFilterCount(products, filter)})
-        </h2>
-        <FilterList
-          handleShowFilter={handleShowFilter}
-          showFilter={showFilter}
-          handleFilterName={handleFilterName}
-        />
+  if (filteredProductList.length) {
+    return (
+      <div className="product-list">
+        <div className="product-list-header">
+          <h2 className="product-tag">
+            Products({getFilterCount(products, filter)})
+          </h2>
+          <FilterList
+            handleShowFilter={handleShowFilter}
+            showFilter={showFilter}
+            handleFilterName={handleFilterName}
+          />
+        </div>
+        {FilterProductList}
       </div>
-      {filteredProductList.map((item) => {
-        return <ItemList key={item.id} product={item} />;
-      })}
-    </div>
-  ) : (
-    <EmptyResult />
-  );
+    );
+  }
+  return <EmptyResult />;
 }
 
 export default ProductList;

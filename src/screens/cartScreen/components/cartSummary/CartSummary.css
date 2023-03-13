@@ -52,10 +52,6 @@
   cursor: pointer;
 }
 
-.cart-summary-footer-total i {
-  font-size: 12px;
-}
-
 @media (max-width: 600px) {
   .cart-summary {
     display: none;

@@ -1,7 +1,7 @@
 const handleQueryChange = (state = "", action) => {
   switch (action.type) {
     case "QUERY":
-      return (state = action.query);
+      return action.query;
     default:
       return state;
   }

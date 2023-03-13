@@ -4,9 +4,7 @@
   align-items: center;
 }
 
-.product-quantity-selector h3 {
-  margin-left: 6px;
-  margin-right: 6px;
+.product-quantity-selector-quantity {
   color: rgb(135, 126, 126);
 }
 
@@ -23,7 +21,7 @@
   cursor: pointer;
 }
 
-.container i {
+.product-quantity-selector-quantity-icon {
   font-size: 12px;
   margin: 0px;
 }

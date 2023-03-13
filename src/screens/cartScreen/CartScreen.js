@@ -1,17 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import EmptyCart from "./components/emptyCart";
 import CartContent from "./components/cartContent";
-import getCartCount from "../../utils/GetCartCount";
+import { getCartCount } from "../../utils/GetCartCount.utility";
 
 function CartScreen() {
   const products = useSelector((state) => state.handleCart);
 
-  const handleCartCount = () => {
-    return getCartCount(products);
-  };
-
-  return handleCartCount(products) ? <CartContent /> : <EmptyCart />;
+  if (getCartCount(products)) return <CartContent />;
+  return <EmptyCart />;
 }
 
 export default CartScreen;

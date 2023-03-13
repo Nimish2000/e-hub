@@ -1,9 +1,7 @@
 .product-content {
   display: flex;
   flex-direction: row;
-  margin-left: 4%;
-  margin-right: 4%;
-  margin-top: 5px;
+  margin: 5px 4% 0px 4%;
   border: 0.001px solid grey;
   border-radius: 3px;
   padding: 10px;

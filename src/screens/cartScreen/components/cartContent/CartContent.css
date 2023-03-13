@@ -25,28 +25,6 @@
   font-size: 23px;
 }
 
-.checkout-footer {
-  display: block;
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-spinner {
-  width: 10px;
-  height: 10px;
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid green; /* Black */
-  border-radius: 50%;
-  animation: spinner 1s linear infinite;
-}
-
 @media (max-width: 600px) {
   .cart-content {
     flex-direction: column;
