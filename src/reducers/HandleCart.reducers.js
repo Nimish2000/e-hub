@@ -1,4 +1,4 @@
-import map from "lodash.map";
+import _map from "lodash.map";
 
 import { productListData } from "../config/constants";
 
@@ -7,14 +7,14 @@ const initialState = productListData;
 const handleCart = (state = initialState, action) => {
   switch (action.type) {
     case "INCREMENT":
-      return map(state, (val) => {
+      return _map(state, (val) => {
         if (val.id === action.id)
           return { ...val, isCart: true, quantity: val.quantity + 1 };
         else return val;
       });
 
     case "DECREMENT":
-      return map(state, (val) => {
+      return _map(state, (val) => {
         if (val.id === action.id) {
           if (val.quantity - 1 === 0) {
             return { ...val, isCart: false, quantity: 0 };
@@ -27,7 +27,7 @@ const handleCart = (state = initialState, action) => {
       });
 
     default:
-      return initialState;
+      return state;
   }
 };
 

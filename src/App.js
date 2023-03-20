@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DashboardScreen from "./screens/dashboardScreen";
 import CartScreen from "./screens/cartScreen";
-
 import store from "./store";
 
 store.subscribe(() => store.getState());

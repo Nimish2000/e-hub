@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
-import map from "lodash.map";
+import _map from "lodash.map";
+import PropTypes from "prop-types";
 
 import { filtersList } from "../../../../../../config/constants";
 import "./FilterList.css";
@@ -9,12 +10,12 @@ function FilterList({ showFilter, handleShowFilter, handleFilterName }) {
 
   const showIcon = useMemo(() => {
     if (showFilter) return <i className="fa-solid fa-chevron-up" />;
-    return <i className="fa-solid fa-chevron-down"></i>;
+    return <i className="fa-solid fa-chevron-down" />;
   }, [showFilter]);
 
   const FilteredList = useMemo(() => {
     if (showFilter) {
-      return map(filters, (filter) => {
+      return _map(filters, (filter) => {
         return (
           <div
             key={filter}
@@ -27,7 +28,7 @@ function FilterList({ showFilter, handleShowFilter, handleFilterName }) {
         );
       });
     }
-  }, [showFilter, handleFilterName]);
+  }, [showFilter, handleFilterName, filters]);
 
   return (
     <div className="product-filter" onClick={handleShowFilter}>
@@ -38,5 +39,11 @@ function FilterList({ showFilter, handleShowFilter, handleFilterName }) {
     </div>
   );
 }
+
+FilterList.propTypes = {
+  showFilter: PropTypes.bool.isRequired,
+  handleShowFilter: PropTypes.func.isRequired,
+  handleFilterName: PropTypes.func.isRequired,
+};
 
 export default FilterList;

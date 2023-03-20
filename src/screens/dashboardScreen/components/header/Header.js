@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import debounce from "lodash/debounce";
+import React, { useCallback, useMemo } from "react";
+import _debounce from "lodash/debounce";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,12 +12,12 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleCartClick = () => {
+  const handleCartClick = useCallback(() => {
     navigate("/cart");
-  };
+  }, [navigate]);
 
   const debounceSave = useMemo(
-    () => debounce((query) => dispatch(queryChange(query)), 500),
+    () => _debounce((query) => dispatch(queryChange(query)), 500),
     [dispatch]
   );
 

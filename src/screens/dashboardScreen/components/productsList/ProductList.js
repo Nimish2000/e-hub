@@ -1,12 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import map from "lodash.map";
-import filters from "lodash.filter";
+import _map from "lodash.map";
+import _filters from "lodash.filter";
 
 import ItemList from "../../../../components/itemList";
 import FilterList from "./components/filterList";
 import EmptyResult from "./components/emptyResult";
-
 import getFilterCount from "../../../../utils/GetFilterCount.utility";
 import "./ProductList.css";
 
@@ -17,38 +16,45 @@ function ProductList() {
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState("All");
 
-  const queryProductList = () => {
+  const queryProductList = useCallback(() => {
     if (!query) {
       return products;
     } else {
-      return filters(products, (val) => {
+      return _filters(products, (val) => {
         return val.title.toLowerCase().includes(query.trim().toLowerCase());
       });
     }
-  };
+  }, [query, products]);
 
-  const filterProductList = (tmpList) => {
-    if (filter === "All") return tmpList;
-    else {
-      return filters(tmpList, (val) => val.category === filter);
-    }
-  };
+  const filterProductList = useCallback(
+    (tmpList) => {
+      if (filter === "All") return tmpList;
+      else {
+        return _filters(tmpList, (val) => val.category === filter);
+      }
+    },
+    [filter]
+  );
+
   useEffect(() => {
     let tmpList = queryProductList();
 
     setFilteredProductList(filterProductList(tmpList));
-  }, [filter, products, query]);
+  }, [filter, products, query, filterProductList, queryProductList]);
 
-  const handleShowFilter = () => {
+  const handleShowFilter = useCallback(() => {
     setShowFilter(!showFilter);
-  };
+  }, [showFilter]);
 
-  const handleFilterName = (filterName) => () => {
-    setFilter(filterName);
-  };
+  const handleFilterName = useCallback(
+    (filterName) => () => {
+      setFilter(filterName);
+    },
+    [setFilter]
+  );
 
   const FilterProductList = useMemo(() => {
-    return map(filteredProductList, (product) => {
+    return _map(filteredProductList, (product) => {
       return <ItemList key={product.id} product={product} />;
     });
   }, [filteredProductList]);

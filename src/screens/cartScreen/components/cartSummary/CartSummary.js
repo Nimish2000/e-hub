@@ -1,37 +1,38 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
-import map from "lodash.map";
-import round from "lodash.round";
+import _map from "lodash.map";
+import _round from "lodash.round";
 
-import { getTotalPrice } from "../../../../utils/GetCartCount.utility";
+import {
+  getCartList,
+  getTotalPrice,
+} from "../../../../utils/GetCartCount.utility";
 import "./CartSummary.css";
 
 function CartSummary() {
   const products = useSelector((state) => state.handleCart);
 
-  const handleCheckout = () => {
+  const handleCheckout = useCallback(() => {
     alert("Order Placed");
-  };
+  }, []);
 
   const ProductList = useMemo(() => {
-    return map(products, (product) => {
-      if (product.isCart)
-        return (
-          <div key={product.id} className="cart-summary-product-list-content">
-            <div>
-              <p>
-                {product.quantity} <i className="fa-solid fa-xmark"></i>
-                {product.title}
-              </p>
-              <p>Price : {product.price}</p>
-            </div>
-            <h4>
-              <i className="fa-solid fa-indian-rupee-sign "></i>
-              {round(product.price * product.quantity, 2)}
-            </h4>
-          </div>
-        );
-    });
+    let cartItems = getCartList(products);
+    return _map(cartItems, (product) => (
+      <div key={product.id} className="cart-summary-product-list-content">
+        <div>
+          <p>
+            {product.quantity} <i className="fa-solid fa-xmark"></i>
+            {product.title}
+          </p>
+          <p>Price : {product.price}</p>
+        </div>
+        <h4>
+          <i className="fa-solid fa-indian-rupee-sign "></i>
+          {_round(product.price * product.quantity, 2)}
+        </h4>
+      </div>
+    ));
   }, [products]);
 
   return (

@@ -1,22 +1,28 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 import QuantityButton from "./components/quantityButton";
 import AddToCartButton from "./components/addToCartButton";
-
 import { increment, decrement } from "../../actions/AddToCart.action.js";
 import "./ItemList.css";
 
 function ItemList({ product }) {
   const dispatch = useDispatch();
 
-  const handleIncrementQuantity = (id) => () => {
-    dispatch(increment(id));
-  };
+  const handleIncrementQuantity = useCallback(
+    (id) => () => {
+      dispatch(increment(id));
+    },
+    [dispatch]
+  );
 
-  const handleDecrementQuantity = (id) => () => {
-    dispatch(decrement(id));
-  };
+  const handleDecrementQuantity = useCallback(
+    (id) => () => {
+      dispatch(decrement(id));
+    },
+    [dispatch]
+  );
 
   const ProductQuantityButton = useMemo(() => {
     if (product.quantity)
@@ -31,7 +37,12 @@ function ItemList({ product }) {
     return (
       <AddToCartButton onIncrementCount={handleIncrementQuantity(product.id)} />
     );
-  }, [product.quantity]);
+  }, [
+    product.id,
+    product.quantity,
+    handleDecrementQuantity,
+    handleIncrementQuantity,
+  ]);
 
   return (
     <div className="product-content">
@@ -52,5 +63,16 @@ function ItemList({ product }) {
     </div>
   );
 }
+
+ItemList.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default ItemList;

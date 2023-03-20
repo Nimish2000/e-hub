@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./AddToCartButton.css";
 
@@ -11,5 +12,9 @@ function AddToCartButton({ onIncrementCount }) {
     </div>
   );
 }
+
+AddToCartButton.propTypes = {
+  onIncrementCount: PropTypes.func.isRequired,
+};
 
 export default AddToCartButton;

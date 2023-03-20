@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router";
 
 import emptyCartImage from "../../../../../src/assets/images/emptyCartImage.jpeg";
@@ -7,9 +7,9 @@ import "./EmptyCart.css";
 function EmptyCart() {
   const navigate = useNavigate();
 
-  const handleEmptyCartClick = () => {
+  const handleEmptyCartClick = useCallback(() => {
     navigate(-1);
-  };
+  }, [navigate]);
 
   return (
     <div className="empty-cart">

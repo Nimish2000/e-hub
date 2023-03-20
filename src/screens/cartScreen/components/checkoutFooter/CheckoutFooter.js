@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
 
 import { getTotalPrice } from "../../../../utils/GetCartCount.utility";
@@ -7,9 +7,9 @@ import "./CheckoutFooter.css";
 function CheckoutFooter() {
   const products = useSelector((state) => state.handleCart);
 
-  const handleCheckoutSubmit = () => {
+  const handleCheckoutSubmit = useCallback(() => {
     alert("Order Placed");
-  };
+  }, []);
 
   return (
     <div className="checkout-footer-button">

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./QuantityButton.css";
 
@@ -21,5 +22,11 @@ function QuantityButton({ quantity, onIncrementCount, onDecrementCount }) {
     </div>
   );
 }
+
+QuantityButton.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  onIncrementCount: PropTypes.func.isRequired,
+  onDecrementCount: PropTypes.func.isRequired,
+};
 
 export default QuantityButton;
