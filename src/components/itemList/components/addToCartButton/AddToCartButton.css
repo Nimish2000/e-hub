@@ -1,0 +1,25 @@
+.product-quantity-button {
+  margin: 0px 0px 8px 0px;
+  border: none;
+  cursor: pointer;
+  background-color: grey;
+  color: white;
+  font-size: 15px;
+}
+
+.product-quantity-button-name {
+  margin: 5px;
+  font-size: 15px;
+}
+
+.product-quantity-button-name:hover {
+  color: rgb(225, 225, 62);
+}
+
+@media (max-width: 600px) {
+  .product-quantity-button {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    cursor: none;
+  }
+}

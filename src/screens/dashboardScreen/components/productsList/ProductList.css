@@ -1,0 +1,16 @@
+.product-list {
+  margin-top: 55px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.product-tag {
+  margin-left: 4%;
+  font-size: 25px;
+}
+
+.product-list-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

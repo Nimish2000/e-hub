@@ -1,0 +1,38 @@
+.product-quantity-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product-quantity-selector-quantity {
+  color: rgb(135, 126, 126);
+}
+
+.product-quantity-selector-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+  color: white;
+  margin: 0px 6px 0px 6px;
+  cursor: pointer;
+}
+
+.product-quantity-selector-quantity-icon {
+  font-size: 12px;
+  margin: 0px;
+}
+
+.container:hover {
+  color: rgb(225, 225, 62);
+}
+
+@media (max-width: 600px) {
+  .container {
+    cursor: none;
+  }
+}
